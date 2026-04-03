@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 import reactor.core.publisher.Mono;
 
 @Service
-public class ProductServiceImpl implements ProductService {
+public class ProductServiceV1Impl implements ProductServiceV1 {
     private ProductRepository productRepository;
 
-    public ProductServiceImpl(ProductRepository productRepository) {
+    public ProductServiceV1Impl(ProductRepository productRepository) {
         this.productRepository = productRepository;
     }
 
