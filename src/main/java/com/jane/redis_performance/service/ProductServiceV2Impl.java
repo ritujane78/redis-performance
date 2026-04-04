@@ -11,9 +11,13 @@ public class ProductServiceV2Impl implements ProductServiceV2 {
     @Autowired
     private CacheTemplate<Integer, Product> cacheTemplate;
 
+    @Autowired
+    private ProductVisitService productVisitService;
+
     @Override
     public Mono<Product> getProduct(int id) {
-        return this.cacheTemplate.get(id);
+        return this.cacheTemplate.get(id)
+                .doFirst(() -> productVisitService.addVisit(id));
     }
 
     @Override
